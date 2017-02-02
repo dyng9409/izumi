@@ -3,10 +3,9 @@ const client = new Discord.Client();
 const fs = require('fs');
 const path = require('path');
 const MeCab = require('mecab-async');
-const utf8 = require('utf8');
 var mecab = new MeCab();
 
-mecab.command = 'mecab -d dic';
+MeCab.command='mecab -d dic';
 
 client.on('ready', () => {
     console.log('Izumi starting up!');
@@ -39,10 +38,10 @@ client.on('message', message => {
     }
     else if (command === '!parse') {
         if ( args ) {
-            mecab.parse( args , function (err, res) {
+            mecab.wakachi( args , function (err, res) {
                 if (err) throw err;
                 console.log( res );
-                message.channel.sendMessage( res );
+                message.channel.sendMessage( '\n' + res );
             });
         }
         else message.channel.sendMessage('Nothing to parse!');
