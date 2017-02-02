@@ -39,9 +39,7 @@ client.on('message', message => {
     }
     else if (command === '!parse') {
         if ( args ) {
-            console.log( args );
-            console.log( utf8.encode( args ) );
-            mecab.parse( 'うつりにけりな' , function (err, res) {
+            mecab.parse( args , function (err, res) {
                 if (err) throw err;
                 console.log( res );
                 message.channel.sendMessage( res );
