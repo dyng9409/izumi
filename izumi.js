@@ -56,13 +56,19 @@ client.on('message', message => {
         }
         else message.channel.sendMessage('Nothing to parse!');
     }
-    else if (command === '!sparse') {
+    else if (command === '!fparse') {
         if ( args ) {
             mecab.parse( args , function (err, res) {
                 if (err) throw err;
                 console.log( res );
 		message.channel.sendMessage('Please remember that even bots make mistakes!');
-                message.channel.sendMessage( res );
+             	for (result of res) {
+		    var section = '';
+		    for (obj of result) {
+    		        section = section + obj + ", ";
+		    }
+		    message.channel.sendMessage("`" + section + "`");
+		}
 		message.channel.sendMessage('If you see any glaring mistakes, please message my dev @狐の雨');
 		message.channel.sendMessage('Also note that I only support classical Japanese at this time!');
             });
