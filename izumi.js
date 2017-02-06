@@ -37,14 +37,28 @@ client.on('message', message => {
     }
     else if (command === '!help') {
         message.channel.sendMessage('List of available commands:');
-	message.channel.sendMessage('- !help - displays this list');
-	message.channel.sendMessage('- !hello - greets Izumi');
-	message.channel.sendMessage('- !echo text - repeats back text');
-	message.channel.sendMessage('- !parse text - parses text');
+	message.channel.sendMessage('\n- !help - displays this list' +
+	                            '\n- !hello - greets Izumi' + 
+	                            '\n- !echo text - repeats back text' +
+	                            '\n- !sparse text - (s)implified text parse' +
+	                            '\n- !fparse text - (f)ully parses the text');
     }
-    else if (command === '!parse') {
+    else if (command === '!sparse') {
         if ( args ) {
             mecab.wakachi( args , function (err, res) {
+                if (err) throw err;
+                console.log( res );
+		message.channel.sendMessage('Please remember that even bots make mistakes!');
+                message.channel.sendMessage( res );
+		message.channel.sendMessage('If you see any glaring mistakes, please message my dev @狐の雨');
+		message.channel.sendMessage('Also note that I only support classical Japanese at this time!');
+            });
+        }
+        else message.channel.sendMessage('Nothing to parse!');
+    }
+    else if (command === '!sparse') {
+        if ( args ) {
+            mecab.parse( args , function (err, res) {
                 if (err) throw err;
                 console.log( res );
 		message.channel.sendMessage('Please remember that even bots make mistakes!');
