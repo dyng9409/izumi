@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/local/bin/node
 
 const Discord = require('discord.js');
 const client = new Discord.Client();
