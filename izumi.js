@@ -86,7 +86,7 @@ client.on('message', message => {
 		file: "https://i.imgur.com/SdKSZq9.png"
 	});
     }
-    else if (command === '!drool") {
+    else if (command === '!drool') {
 	message.channel.sendMessage('', {
 		file: "https://i.imgur.com/JwHLgZ0.png"
 	});
