@@ -5,3 +5,6 @@ dic/*
 *.gradle
 *.idea
 build
+token.txt
+out
+*.iml
