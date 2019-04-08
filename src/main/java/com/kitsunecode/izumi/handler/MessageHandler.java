@@ -20,6 +20,9 @@ public class MessageHandler implements Consumer<MessageCreateEvent> {
         MessageChannel channel = message.getChannel().block();
 
         if (msg.isPresent() && msg.get().startsWith("!")) {
+            if (msg.get().equals("!help")) {
+                channel.createMessage("Available Commands: !kys, !wah, !pout, !rip, !friends, !petpet, !fml, !tbc, !hmm, !woofus, !ezmodo").block();
+            }
             String response = new ImageResponseCommand().getImage(msg.get());
             if (response != null) {
                 channel.createEmbed(spec -> {
